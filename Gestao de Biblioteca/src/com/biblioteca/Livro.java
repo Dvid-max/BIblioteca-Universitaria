@@ -1,6 +1,6 @@
 package com.biblioteca;
 
-import java.util.List;
+
 
 public class Livro {
     private String titulo;
@@ -8,31 +8,52 @@ public class Livro {
     private String isbn;
     private int ano;
     private String editora;
-    List<Livro> livros;
 
     public Livro(String titulo, String autor, String isbn, int ano, String editora) {
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
         this.ano = ano;
+        this.editora = editora;
     }
 
-
-    public void cadastrarLivro(Livro livro){
-        livros.add(livro);
+    public String getTitulo() {
+        return titulo;
     }
 
-    public void consultarLivro(Livro livro){
-        if (livros.isEmpty()){
-            System.out.println("Lista vazia.");
-        }else{
-            System.out.println("------------------------------------");
-            System.out.println("Lista de Livros");
-            System.out.println("------------------------------------");
-            for (int i = 0; i < livros.size(); i++){
-                System.out.println((i+1) + " - " + livros.get(i));
-            }
-        }
+    public void setTitulo(String titulo) {
+        this.titulo = titulo;
     }
 
+    public String getAutor() {
+        return autor;
+    }
+
+    public void setAutor(String autor) {
+        this.autor = autor;
+    }
+
+    public String getIsbn() {
+        return isbn;
+    }
+
+    public void setIsbn(String isbn) {
+        this.isbn = isbn;
+    }
+
+    public int getAno() {
+        return ano;
+    }
+
+    public void setAno(int ano) {
+        this.ano = ano;
+    }
+
+    public String getEditora() {
+        return editora;
+    }
+
+    public void setEditora(String editora) {
+        this.editora = editora;
+    }
 }

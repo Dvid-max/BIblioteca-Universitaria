@@ -4,7 +4,9 @@ import java.util.Scanner;
 
 public class Main {
     public static void main(String[] args) {
+        //Concertar main, criando o objeto biblioteca fora do case e mudando os atributos do livro sem usar set
         Scanner sc = new Scanner(System.in);
+        Livro livro = new Livro();
         int resposta = -1;
        do {
            System.out.println("-------------------------------");
@@ -14,6 +16,7 @@ public class Main {
            System.out.println("Digite '2' para cadastrar um usuário");
            System.out.println("Digite '3' para consultar disponibilidade de livro");
            System.out.println("Digite '4' para listar livros");
+           System.out.println("Digite '5' para devolver livros");
            System.out.println("Digite '0' para sair da Biblioteca");
 
            resposta = sc.nextInt();
@@ -26,18 +29,18 @@ public class Main {
                    System.out.println("Cadastro de livro");
                    System.out.println("------------------");
                    System.out.print("Título: ");
-                   String titulo = sc.nextLine();
+                   livro.setTitulo(sc.nextLine());
                    System.out.print("Autor: ");
-                   String autor = sc.nextLine();
+                   livro.setAutor(sc.nextLine());
                    System.out.print("ISBN: ");
-                   String isbn = sc.nextLine();
+                   livro.setIsbn(sc.nextLine());
                    System.out.print("Ano: ");
-                   int ano = sc.nextInt();
+                   livro.setAno(sc.nextInt());
                    System.out.print("Editora: ");
-                   String editora = sc.nextLine();
+                   livro.setEditora(sc.nextLine());
 
                    //Criando objeto
-                   Livro livro = new Livro(titulo, autor, isbn, ano, editora);
+
                    //Cadastrando Livro
                    livro.cadastrarLivro(livro);
                    System.out.println("Livro cadastrado com sucesso!");
@@ -74,7 +77,8 @@ public class Main {
                    }
                    break;
                case 3:
-
+                    //Cohsultar livros disponiveis
+                    livro.consultarLivro(livro);
                    System.out.println("Livros consultados com sucesso!");
                    break;
                case 4:
