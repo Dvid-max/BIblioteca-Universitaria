@@ -6,7 +6,7 @@ public class Main {
     public static void main(String[] args) {
         //Concertar main, criando o objeto biblioteca fora do case e mudando os atributos do livro sem usar set
         Scanner sc = new Scanner(System.in);
-        Livro livro = new Livro();
+        Biblioteca biblioteca = new Biblioteca();
         int resposta = -1;
        do {
            System.out.println("-------------------------------");
@@ -29,21 +29,22 @@ public class Main {
                    System.out.println("Cadastro de livro");
                    System.out.println("------------------");
                    System.out.print("Título: ");
-                   livro.setTitulo(sc.nextLine());
+                   String titulo = sc.nextLine();
                    System.out.print("Autor: ");
-                   livro.setAutor(sc.nextLine());
+                   String autor = sc.nextLine();
                    System.out.print("ISBN: ");
-                   livro.setIsbn(sc.nextLine());
+                   String isbn = sc.nextLine();
                    System.out.print("Ano: ");
-                   livro.setAno(sc.nextInt());
+                   int ano = sc.nextInt();
+                   sc.nextLine();
                    System.out.print("Editora: ");
-                   livro.setEditora(sc.nextLine());
+                   String editora = sc.nextLine();
 
                    //Criando objeto
+                   Livro livro =  new Livro(titulo, autor, isbn, ano, editora);
+                   //Cadastrando Livro na Biblioteca
+                   biblioteca.cadastrarLivro(livro);
 
-                   //Cadastrando Livro
-                   livro.cadastrarLivro(livro);
-                   System.out.println("Livro cadastrado com sucesso!");
                    break;
                case 2:
                    System.out.println("------------------");
@@ -78,7 +79,7 @@ public class Main {
                    break;
                case 3:
                     //Cohsultar livros disponiveis
-                    livro.consultarLivro(livro);
+                   biblioteca.consultarLivros();
                    System.out.println("Livros consultados com sucesso!");
                    break;
                case 4:

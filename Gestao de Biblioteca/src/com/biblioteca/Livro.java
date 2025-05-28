@@ -56,4 +56,9 @@ public class Livro {
     public void setEditora(String editora) {
         this.editora = editora;
     }
+    @Override
+    public String toString() {
+        return "Título: " + titulo + ", Autor: " + autor + ", ISBN: " + isbn +
+                ", Ano: " + ano + ", Editora: " + editora;
+    }
 }
