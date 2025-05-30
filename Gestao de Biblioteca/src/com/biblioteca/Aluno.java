@@ -1,9 +1,10 @@
 package com.biblioteca;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Aluno extends Usuario{
-    List<Usuario> alunos;
+    List<Usuario> alunos = new ArrayList<>();
 
    public Aluno(Usuario usuario) {
 

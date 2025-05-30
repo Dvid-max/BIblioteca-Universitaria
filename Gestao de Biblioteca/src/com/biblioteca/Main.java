@@ -1,6 +1,7 @@
 package com.biblioteca;
 
 import java.util.Scanner;
+import java.util.function.ObjIntConsumer;
 
 public class Main {
     public static void main(String[] args) {
@@ -8,6 +9,7 @@ public class Main {
         Scanner sc = new Scanner(System.in);
         Biblioteca biblioteca = new Biblioteca();
         int resposta = -1;
+        int resposta2 = -1;
        do {
            System.out.println("-------------------------------");
            System.out.println("Biblioteca Acadêmica");
@@ -17,12 +19,14 @@ public class Main {
            System.out.println("Digite '3' para consultar disponibilidade de livro");
            System.out.println("Digite '4' para listar livros");
            System.out.println("Digite '5' para devolver livros");
+           System.out.println("Digite '6' para pegar livros emprestados");
            System.out.println("Digite '0' para sair da Biblioteca");
 
            resposta = sc.nextInt();
            sc.nextLine();
 
            switch (resposta) {
+               //CADASTRO DE LIVROS
                case 1:
                    //Pegando dados do livro
                    System.out.println("------------------");
@@ -46,6 +50,7 @@ public class Main {
                    biblioteca.cadastrarLivro(livro);
 
                    break;
+               //CADASTRO DE USUARIOS
                case 2:
                    System.out.println("------------------");
                    System.out.println("Cadastro de Usuário");
@@ -77,13 +82,41 @@ public class Main {
                        System.out.println("Digite somente 'Professor' ou 'Aluno'.");
                    }
                    break;
+               //PESQUISAR LIVROS
                case 3:
-                    //Cohsultar livros disponiveis
-                   biblioteca.consultarLivros();
-                   System.out.println("Livros consultados com sucesso!");
+                   do {
+                       System.out.println("Digite '1' para listar livros disponíves");
+                       System.out.println("Digite '2' para pesquisar livros disponíves");
+                       System.out.println("Digite '0' para sair.");
+                       resposta2= sc.nextInt();
+                       sc.nextLine();
+                       if (resposta2==1) {
+                           //Listar livros
+                           biblioteca.consultarLivros();
+                       }else if (resposta2==2) {
+                           //Consultar livros
+                           System.out.println("Nome: ");
+                           String titulo2 = sc.nextLine();
+                           biblioteca.pesquisarLivro(titulo2);
+                       }else;
+                   }while (resposta2 != 0);
                    break;
                case 4:
                    System.out.println("Livros listados com sucesso!");
+                   break;
+               case 5:
+                   System.out.println("Em andamento");
+                   break;
+               case 6:
+                   System.out.print("Nome do livro: ");
+                   String nome_livro = sc.nextLine();
+                   Livro livroParaEmprestar = biblioteca.buscarLivroPorTitulo(nome_livro);
+                   if (livroParaEmprestar == null) {
+                       System.out.println("Livro não encontrado!");
+                   }else {
+                       biblioteca.emprestimoDeLivro(livroParaEmprestar);
+                       System.out.println("Emprestimo realizado com sucesso!");
+                   }
                    break;
            }
 

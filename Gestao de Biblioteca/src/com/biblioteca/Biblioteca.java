@@ -5,6 +5,8 @@ import java.util.List;
 
 public class Biblioteca {
     private List<Livro> livros = new ArrayList<>();
+    private List<Livro> emprestados = new ArrayList<>();
+
 
     public void cadastrarLivro(Livro livro) {
         livros.add(livro);
@@ -27,4 +29,44 @@ public class Biblioteca {
     public void excluirLivro(Livro livro) {
         livros.remove(livro);
     }
+
+    public void emprestimoDeLivro(Livro livro) {
+        if (!livros.contains(livro)) {
+            System.out.println("Livro não encontrado.");
+        } else {
+            emprestados.add(livro);
+            livros.remove(livro);
+            System.out.println("Livro emprestado com sucesso.");
+        }
+
+
+    }
+
+    public Livro buscarLivroPorTitulo(String titulo) {
+        for (Livro livro : livros) {
+            if (livro.getTitulo().equalsIgnoreCase(titulo)) {
+                return livro;
+            }
+        }
+        return null;
+    }
+
+    public void pesquisarLivro(String titulo2) {
+        boolean encontrado = false;
+        for (Livro livro : livros) {
+            if (livro.getTitulo().equalsIgnoreCase(titulo2)) {
+                System.out.println(livro);
+                encontrado = true;
+            }
+        }
+
+        if (!encontrado) {
+            System.out.println("Livro não encontrado");
+        }
+    }
+
+
+
+
 }
+
