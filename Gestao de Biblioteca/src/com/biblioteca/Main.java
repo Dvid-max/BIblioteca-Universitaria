@@ -17,7 +17,7 @@ public class Main {
            System.out.println("Digite '1' para cadastrar um livro");
            System.out.println("Digite '2' para cadastrar um usuário");
            System.out.println("Digite '3' para consultar disponibilidade de livro");
-           System.out.println("Digite '4' para listar livros");
+           System.out.println("Digite '4' para realizar emprestimo");
            System.out.println("Digite '5' para devolver livros");
            System.out.println("Digite '6' para pegar livros emprestados");
            System.out.println("Digite '0' para sair da Biblioteca");
@@ -101,22 +101,23 @@ public class Main {
                        }else;
                    }while (resposta2 != 0);
                    break;
+               //REALIZAR EMPRESTIMOS
                case 4:
-                   System.out.println("Livros listados com sucesso!");
+                   System.out.print("Nome do livro: ");
+                   String nome_livro = sc.nextLine();
+                   Livro livroParaEmprestar = biblioteca.buscarLivroPorTitulo(nome_livro);
+                   if (livroParaEmprestar == null) {
+                       System.out.println("Livro não encontrado");
+                   }else {
+                       biblioteca.emprestimoDeLivro(livroParaEmprestar);
+                       System.out.println("Emprestimo realizado com sucesso!");
+                   }
                    break;
                case 5:
                    System.out.println("Em andamento");
                    break;
                case 6:
-                   System.out.print("Nome do livro: ");
-                   String nome_livro = sc.nextLine();
-                   Livro livroParaEmprestar = biblioteca.buscarLivroPorTitulo(nome_livro);
-                   if (livroParaEmprestar == null) {
-                       System.out.println("Livro não encontrado!");
-                   }else {
-                       biblioteca.emprestimoDeLivro(livroParaEmprestar);
-                       System.out.println("Emprestimo realizado com sucesso!");
-                   }
+
                    break;
            }
 
