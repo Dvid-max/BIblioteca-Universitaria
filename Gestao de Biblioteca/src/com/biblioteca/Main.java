@@ -1,127 +1,135 @@
 package com.biblioteca;
 
+import com.sun.security.jgss.GSSUtil;
+
 import java.util.Scanner;
-import java.util.function.ObjIntConsumer;
 
 public class Main {
     public static void main(String[] args) {
-        //Concertar main, criando o objeto biblioteca fora do case e mudando os atributos do livro sem usar set
+        //DECLARANDO VARIAVEIS
+        int resposta = -1;
+
+        //CRIANDO OBJERTOS
         Scanner sc = new Scanner(System.in);
         Biblioteca biblioteca = new Biblioteca();
-        int resposta = -1;
-        int resposta2 = -1;
-       do {
-           System.out.println("-------------------------------");
-           System.out.println("Biblioteca Acadêmica");
-           System.out.println("-------------------------------");
-           System.out.println("Digite '1' para cadastrar um livro");
-           System.out.println("Digite '2' para cadastrar um usuário");
-           System.out.println("Digite '3' para consultar disponibilidade de livro");
-           System.out.println("Digite '4' para realizar emprestimo");
-           System.out.println("Digite '5' para devolver livros");
-           System.out.println("Digite '6' para pegar livros emprestados");
-           System.out.println("Digite '0' para sair da Biblioteca");
 
-           resposta = sc.nextInt();
-           sc.nextLine();
+        do {
+            System.out.println("-------------------");
+            System.out.println("BIBLIOTECA");
+            System.out.println("-------------------");
+            // ✅ Cadastro de livros: título, autor, ISBN, ano e editora.
+            System.out.println("Digite '1' para cadastrar um livro");
 
-           switch (resposta) {
-               //CADASTRO DE LIVROS
-               case 1:
-                   //Pegando dados do livro
-                   System.out.println("------------------");
-                   System.out.println("Cadastro de livro");
-                   System.out.println("------------------");
-                   System.out.print("Título: ");
-                   String titulo = sc.nextLine();
-                   System.out.print("Autor: ");
-                   String autor = sc.nextLine();
-                   System.out.print("ISBN: ");
-                   String isbn = sc.nextLine();
-                   System.out.print("Ano: ");
-                   int ano = sc.nextInt();
-                   sc.nextLine();
-                   System.out.print("Editora: ");
-                   String editora = sc.nextLine();
+            //✅ Cadastro de usuários: nome, matrícula, tipo (aluno ou professor), CPF e e-mail.
+            System.out.println("Digite '2' para cadastrar um usuário");
 
-                   //Criando objeto
-                   Livro livro =  new Livro(titulo, autor, isbn, ano, editora);
-                   //Cadastrando Livro na Biblioteca
-                   biblioteca.cadastrarLivro(livro);
+            //✅ Consulta de disponibilidade de livros.
+            System.out.println("Digite '3' para consultar a disponibilidade de um livro");
 
-                   break;
-               //CADASTRO DE USUARIOS
-               case 2:
-                   System.out.println("------------------");
-                   System.out.println("Cadastro de Usuário");
-                   System.out.println("------------------");
-                   System.out.print("Nome: ");
-                   String nome = sc.nextLine();
-                   System.out.print("Matrícula: ");
-                   String matricula = sc.nextLine();
-                   System.out.print("Tipo(Aluno ou Professor): ");
-                   String tipo = sc.nextLine();
-                   System.out.print("cpf");
-                   String cpf = sc.nextLine();
-                   System.out.print("e-mail");
-                   String email = sc.nextLine();
+            //✅ Empréstimos: número do empréstimo, usuário, livro(s), data e status do empréstimo.
+            System.out.println("Digite '4' para realizar um emprestimo");
 
-                   Usuario usuario = new Usuario(nome, matricula, tipo, cpf, email);
+            //✅ Devolução de livros: atualização do status do empréstimo e da disponibilidade do exemplar.
+            System.out.println("Digite '5' para devolver um livro");
 
+            //✅ Listagem de livros: ISBN, título, autor, editora e status (disponível ou emprestado).
+            System.out.println("Digite '6' para listar livros");
+            System.out.println("Digite '0' para sair");
 
-                   if (tipo.equals("Professor")) {
-                       Professor professor = new Professor(usuario);
-                       professor.cadastrarUsuario(professor);
-                       System.out.println("Professor cadastrado com sucesso!");
-                   }else if (tipo.equals("Aluno")) {
-                       Aluno aluno = new Aluno(usuario);
-                       aluno.cadastrarUsuario(aluno);
-                       System.out.println("Aluno cadastrado com sucesso!");
-                   }else {
-                       System.out.println("Erro ao efeturar cadastro.");
-                       System.out.println("Digite somente 'Professor' ou 'Aluno'.");
-                   }
-                   break;
-               //PESQUISAR LIVROS
-               case 3:
-                   do {
-                       System.out.println("Digite '1' para listar livros disponíves");
-                       System.out.println("Digite '2' para pesquisar livros disponíves");
-                       System.out.println("Digite '0' para sair.");
-                       resposta2= sc.nextInt();
-                       sc.nextLine();
-                       if (resposta2==1) {
-                           //Listar livros
-                           biblioteca.consultarLivros();
-                       }else if (resposta2==2) {
-                           //Consultar livros
-                           System.out.println("Nome: ");
-                           String titulo2 = sc.nextLine();
-                           biblioteca.pesquisarLivro(titulo2);
-                       }else;
-                   }while (resposta2 != 0);
-                   break;
-               //REALIZAR EMPRESTIMOS
-               case 4:
-                   System.out.print("Nome do livro: ");
-                   String nome_livro = sc.nextLine();
-                   Livro livroParaEmprestar = biblioteca.buscarLivroPorTitulo(nome_livro);
-                   if (livroParaEmprestar == null) {
-                       System.out.println("Livro não encontrado");
-                   }else {
-                       biblioteca.emprestimoDeLivro(livroParaEmprestar);
-                       System.out.println("Emprestimo realizado com sucesso!");
-                   }
-                   break;
-               case 5:
-                   System.out.println("Em andamento");
-                   break;
-               case 6:
+            resposta = sc.nextInt();
+            sc.nextLine();
 
-                   break;
-           }
+            switch (resposta) {
+                case 1:
+                    System.out.println("CADASTRO DE LIVROS");
+                    System.out.print("Título: ");
+                    String titulo = sc.nextLine();
+                    System.out.print("Autor: ");
+                    String autor = sc.nextLine();
+                    System.out.print("Isbn: ");
+                    String isbn = sc.nextLine();
+                    System.out.print("Ano: ");
+                    int ano = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Editora: ");
+                    String editora = sc.nextLine();
 
+                    Livro livro = new Livro(titulo, autor, isbn, ano, editora);
+                    biblioteca.cadastrarLivro(livro);
+                    System.out.println("Livro cadastrado com sucesso!");
+                    break;
+                case 2:
+                    System.out.println("CADASTRO DE USUARIOS");
+                    System.out.println("Nome: ");
+                    String nome = sc.nextLine();
+                    System.out.println("Matricula: ");
+                    String matricula = sc.nextLine();
+                    System.out.println("Tipo (Aluno ou Professor): ");
+                    String tipo = sc.nextLine();
+                    System.out.println("Cpf: ");
+                    String cpf = sc.nextLine();
+                    System.out.println("Email: ");
+                    String email = sc.nextLine();
 
-       }while (resposta!=0);
+                    Usuario usuario = new Usuario(nome, matricula, tipo, cpf, email);
+
+                    //Criando uma estrutura de controle para saber se o usuário é aluno ou professor
+                    if (tipo.equalsIgnoreCase("Professor")) {
+                        Professor professor = new Professor(usuario);
+                        professor.cadastrarUsuario(usuario);
+                        System.out.println("Professor Cadastrado com sucesso!");
+                    }else if (tipo.equalsIgnoreCase("Aluno")) {
+                        Aluno aluno = new Aluno(usuario);
+                        aluno.cadastrarUsuario(usuario);
+                        System.out.println("Aluno Cadastrado com sucesso!");
+                    }else {
+                        System.out.println("Tipo inserido invalido!");
+                        System.out.println("Digite somente Aluno ou Professor");
+                    }
+                    break;
+                case 3:
+                    System.out.println("DISPONIBILIDADE DE LIVROS");
+                    biblioteca.listarLivros();
+                    break;
+                case 4:
+                    System.out.println("REALIZAR EMPRESTIMOS");
+                    System.out.println("LIVROS DISPONIVEIS");
+                    biblioteca.listarLivros();
+                    System.out.println("Digite apenas o número do livro que deseja realizar um emprestimo: ");
+                    int emprestimo = sc.nextInt();
+                    sc.nextLine();
+                    biblioteca.realizarEmprestimo(emprestimo - 1);
+                    System.out.println("Emprestimo realizado com sucesso!");
+                    break;
+                case 5:
+                    System.out.println("DEVOLUÇÃO DE LIVROS");
+                    System.out.print("Título: ");
+                    String titulo2 = sc.nextLine();
+                    System.out.print("Autor: ");
+                    String autor2 = sc.nextLine();
+                    System.out.print("Isbn: ");
+                    String isbn2 = sc.nextLine();
+                    System.out.print("Ano: ");
+                    int ano2 = sc.nextInt();
+                    sc.nextLine();
+                    System.out.print("Editora: ");
+                    String editora2 = sc.nextLine();
+
+                    Livro livro2 = new Livro(titulo2, autor2, isbn2, ano2, editora2);
+                    biblioteca.cadastrarLivro(livro2);
+                    System.out.println("Livro devolvido com sucesso.");
+                    break;
+                case 6:
+                    System.out.println("TOTAL DE LIVROS");
+                    System.out.println("Livros diponíves");
+                    biblioteca.listarLivros();
+                    System.out.println("Livros emprestados");
+                    biblioteca.listarEmprestados();
+                    System.out.println("------------------------------");
+                break;
+            }
+
+        }while (resposta != 0);
+
     }
 }

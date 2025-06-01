@@ -11,8 +11,8 @@ public class Aluno extends Usuario{
    }
 
 
-    public void cadastrarUsuario(Aluno aluno) {
-        alunos.add(aluno);
+    public void cadastrarUsuario(Usuario usuario) {
+       alunos.add(usuario);
     }
 
 }

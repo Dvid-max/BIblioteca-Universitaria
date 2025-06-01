@@ -9,12 +9,19 @@ public class Livro {
     private int ano;
     private String editora;
 
+
+
     public Livro(String titulo, String autor, String isbn, int ano, String editora) {
         this.titulo = titulo;
         this.autor = autor;
         this.isbn = isbn;
         this.ano = ano;
         this.editora = editora;
+
+    }
+
+    public Livro() {
+
     }
 
     public String getTitulo() {
@@ -56,9 +63,14 @@ public class Livro {
     public void setEditora(String editora) {
         this.editora = editora;
     }
+
+
+
     @Override
     public String toString() {
-        return "Título: " + titulo + ", Autor: " + autor + ", ISBN: " + isbn +
-                ", Ano: " + ano + ", Editora: " + editora;
+        return "Título: " + titulo + ". " +  "Autor: " + autor + ". " + "ISBN: " + isbn + ". " + "Ano: " + ano + ". " + "Editora: " + editora +  "\n";
+
     }
+
 }
+

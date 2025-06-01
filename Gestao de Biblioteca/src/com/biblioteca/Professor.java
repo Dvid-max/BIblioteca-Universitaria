@@ -1,9 +1,10 @@
 package com.biblioteca;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class Professor extends Usuario {
-    List<Usuario> professor;
+    List<Usuario> professores;
 
 
 
@@ -12,6 +13,8 @@ public class Professor extends Usuario {
     }
 
     public void cadastrarUsuario(Usuario usuario) {
-        professor.add(usuario);
+        professores.add(usuario);
     }
+
+
 }
