@@ -16,5 +16,12 @@ public class Professor extends Usuario {
         professores.add(usuario);
     }
 
-
+    public Professor busscarProfessor(ArrayList<Professor> professores, String nome) {
+        for (Professor professor : professores) {
+            if (professor.getNome().equals(nome)) {
+                return professor;
+            }
+        }
+        return null;
+    }
 }

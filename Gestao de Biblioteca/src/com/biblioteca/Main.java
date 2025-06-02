@@ -24,6 +24,7 @@ public class Main {
             System.out.println("Digite '2' para cadastrar um usuário");
 
             //✅ Consulta de disponibilidade de livros.
+            //✅ Listagem de livros: ISBN, título, autor, editora e status (disponível ou emprestado).
             System.out.println("Digite '3' para consultar a disponibilidade de um livro");
 
             //✅ Empréstimos: número do empréstimo, usuário, livro(s), data e status do empréstimo.
@@ -32,9 +33,8 @@ public class Main {
             //✅ Devolução de livros: atualização do status do empréstimo e da disponibilidade do exemplar.
             System.out.println("Digite '5' para devolver um livro");
 
-            //✅ Listagem de livros: ISBN, título, autor, editora e status (disponível ou emprestado).
-            System.out.println("Digite '6' para listar livros");
-            System.out.println("Digite '0' para sair");
+
+
 
             resposta = sc.nextInt();
             sc.nextLine();
@@ -89,44 +89,36 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("DISPONIBILIDADE DE LIVROS");
-                    biblioteca.listarLivros();
-                    break;
-                case 4:
-                    System.out.println("REALIZAR EMPRESTIMOS");
-                    System.out.println("LIVROS DISPONIVEIS");
-                    biblioteca.listarLivros();
-                    System.out.println("Digite apenas o número do livro que deseja realizar um emprestimo: ");
-                    int emprestimo = sc.nextInt();
-                    sc.nextLine();
-                    biblioteca.realizarEmprestimo(emprestimo - 1);
-                    System.out.println("Emprestimo realizado com sucesso!");
-                    break;
-                case 5:
-                    System.out.println("DEVOLUÇÃO DE LIVROS");
-                    System.out.print("Título: ");
-                    String titulo2 = sc.nextLine();
-                    System.out.print("Autor: ");
-                    String autor2 = sc.nextLine();
-                    System.out.print("Isbn: ");
-                    String isbn2 = sc.nextLine();
-                    System.out.print("Ano: ");
-                    int ano2 = sc.nextInt();
-                    sc.nextLine();
-                    System.out.print("Editora: ");
-                    String editora2 = sc.nextLine();
-
-                    Livro livro2 = new Livro(titulo2, autor2, isbn2, ano2, editora2);
-                    biblioteca.cadastrarLivro(livro2);
-                    System.out.println("Livro devolvido com sucesso.");
-                    break;
-                case 6:
                     System.out.println("TOTAL DE LIVROS");
                     System.out.println("Livros diponíves");
                     biblioteca.listarLivros();
                     System.out.println("Livros emprestados");
                     biblioteca.listarEmprestados();
                     System.out.println("------------------------------");
-                break;
+                    break;
+                case 4:
+                    //✅ Empréstimos: número do empréstimo, usuário, livro(s), data e status do empréstimo.
+                    System.out.println("REALIZAR EMPRESTIMO");
+                    System.out.print("Nome do usuário: ");
+                    String nome_usuario  = sc.nextLine();
+                    System.out.print("Nome do livro: ");
+                    String nome_livro  = sc.nextLine();
+                    System.out.print("Data: ");
+                    String data_emprestimo  = sc.nextLine();
+
+                    biblioteca.listarLivros();
+                    System.out.println("LISTA DE LIVROS");
+                    System.out.println("Digite o número do livro que deseja pegar emprestado: ");
+                    int i = sc.nextInt();
+                    sc.nextLine();
+                    biblioteca.realizarEmprestimo(i -1 );
+                    System.out.println(biblioteca.listarEmprestimos(nome_usuario, nome_livro, data_emprestimo));
+                    System.out.println("Emprestimo realizado com sucesso!");
+                    break;
+                case 5:
+
+                    break;
+
             }
 
         }while (resposta != 0);

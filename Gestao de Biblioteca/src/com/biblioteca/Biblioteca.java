@@ -34,6 +34,16 @@ public class Biblioteca {
        int i = 0;
        for (Livro livro : emprestados) {
            System.out.println((i + 1 )+ " - "  + emprestados);
+           i++;
        }
+   }
+
+   public void mostrarEmprestados(int i) {
+        String nome_livro = livros.get(i).getTitulo();
+       System.out.println((i + 1 )+ " - "  + livros.get(i));
+   }
+
+   public String listarEmprestimos(String usuario_nome, String livro_titulo, String emprestimo_data ){
+       return "usuario: " + usuario_nome + ". " + "livro: " + livro_titulo + ". " + "data: " + emprestimo_data;
    }
 }
