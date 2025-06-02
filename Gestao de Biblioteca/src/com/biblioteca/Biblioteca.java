@@ -24,21 +24,24 @@ public class Biblioteca {
       livros.remove(i);
    }
 
-   public void relaizarDevoulucao(int i) {
-       livros.add(livros.get(i));
-       emprestados.remove(i);
-   }
+    public void realizarDevolucao(int i) {
+        Livro devolvido = emprestados.get(i);
+        livros.add(devolvido);
+        emprestados.remove(i);
+    }
 
 
-   public void listarEmprestados() {
-       int i = 0;
-       for (Livro livro : emprestados) {
-           System.out.println((i + 1 )+ " - "  + emprestados);
-           i++;
-       }
-   }
 
-   public void mostrarEmprestados(int i) {
+    public void listarEmprestados() {
+        int i = 0;
+        for (Livro livro : emprestados) {
+            System.out.println((i + 1) + " - " + livro); // Agora imprime só o livro da vez
+            i++;
+        }
+    }
+
+
+    public void mostrarEmprestados(int i) {
         String nome_livro = livros.get(i).getTitulo();
        System.out.println((i + 1 )+ " - "  + livros.get(i));
    }

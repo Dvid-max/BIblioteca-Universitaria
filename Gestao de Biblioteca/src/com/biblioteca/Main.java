@@ -106,8 +106,9 @@ public class Main {
                     System.out.print("Data: ");
                     String data_emprestimo  = sc.nextLine();
 
-                    biblioteca.listarLivros();
                     System.out.println("LISTA DE LIVROS");
+                    biblioteca.listarLivros();
+
                     System.out.println("Digite o número do livro que deseja pegar emprestado: ");
                     int i = sc.nextInt();
                     sc.nextLine();
@@ -116,12 +117,19 @@ public class Main {
                     System.out.println("Emprestimo realizado com sucesso!");
                     break;
                 case 5:
-
+                    System.out.println("DEVOLUÇÕES");
+                    System.out.println("Lista de emprestimos");
+                    biblioteca.listarEmprestados();
+                    System.out.println("Digite o número do livro que deseja devolver: ");
+                    int i1 = sc.nextInt();
+                    biblioteca.realizarDevolucao(i1 -1);
+                    System.out.println("Devoulução realizada.");
                     break;
 
             }
 
         }while (resposta != 0);
 
+        System.out.println(" Seção encerrada...");
     }
 }
