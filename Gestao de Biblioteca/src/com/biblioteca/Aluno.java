@@ -15,4 +15,14 @@ public class Aluno extends Usuario{
        alunos.add(usuario);
     }
 
+   public void listarAlunos() {
+       for (Usuario usuario : alunos) {
+           System.out.println(alunos);
+       }
+   }
+
+    public String toString(){
+        return "Aluno" + getNome() + "|" + "Matricula: " + getMatricula() + "|" + "Cpf: " + getCpf() + "|" + "Email " + getEmail()  ;
+    }
+
 }

@@ -78,10 +78,12 @@ public class Main {
                         Professor professor = new Professor(usuario);
                         professor.cadastrarUsuario(usuario);
                         System.out.println("Professor Cadastrado com sucesso!");
+                        professor.listarProfessores();
                     }else if (tipo.equalsIgnoreCase("Aluno")) {
                         Aluno aluno = new Aluno(usuario);
                         aluno.cadastrarUsuario(usuario);
                         System.out.println("Aluno Cadastrado com sucesso!");
+                        aluno.listarAlunos();
                     }else {
                         System.out.println("Tipo inserido invalido!");
                         System.out.println("Digite somente Aluno ou Professor");
@@ -89,12 +91,15 @@ public class Main {
                     break;
                 case 3:
                     System.out.println("DISPONIBILIDADE DE LIVROS");
+                    System.out.println("=================");
                     System.out.println("TOTAL DE LIVROS");
+                    System.out.println("=================");
                     System.out.println("Livros diponíves");
                     biblioteca.listarLivros();
                     System.out.println("Livros emprestados");
                     biblioteca.listarEmprestados();
                     System.out.println("------------------------------");
+
                     break;
                 case 4:
                     //✅ Empréstimos: número do empréstimo, usuário, livro(s), data e status do empréstimo.

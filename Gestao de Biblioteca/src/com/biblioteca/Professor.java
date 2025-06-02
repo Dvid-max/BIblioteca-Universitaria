@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class Professor extends Usuario {
-    List<Usuario> professores;
+    List<Usuario> professores = new ArrayList<>();
 
 
 
@@ -23,5 +23,15 @@ public class Professor extends Usuario {
             }
         }
         return null;
+    }
+
+    public void listarProfessores() {
+        for (Usuario usuario : professores) {
+            System.out.println(professores);
+        }
+    }
+    @Override
+    public String toString(){
+        return "Professor" + getNome() + "|" + "Matricula: " + getMatricula() + "|" + "Cpf: " + getCpf() + "|" + "Email " + getEmail();
     }
 }

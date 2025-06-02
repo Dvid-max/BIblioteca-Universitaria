@@ -12,6 +12,9 @@ public class Biblioteca {
    }
 
    public  void listarLivros() {
+       if (livros.isEmpty()) {
+           System.out.println("Não há livros disponíveis");
+       }
        int i = 0;
        for (Livro livro : livros) {
            System.out.println((i + 1 )+ " - "  + livro);

@@ -9,6 +9,8 @@ public  class Usuario {
     private String email;
 
 
+
+
     public String getNome() {
         return nome;
     }
@@ -60,8 +62,6 @@ public  class Usuario {
     public Usuario() {
 
     }
-
-
 
 
 
