@@ -6,33 +6,28 @@ import java.util.List;
 public class Professor extends Usuario {
     List<Professor> professores = new ArrayList<>();
 
-
-
+   //Construtor vazio
     public Professor() {
 
     }
 
-
-        public Professor(String nome, String matricula,String tipo, String cpf, String email) {
-            super(nome, matricula, tipo, cpf, email); // Chama o construtor da classe pai (Usuario)
-        }
+    //Criando metodos
+    public Professor(String nome, String matricula, String tipo, String cpf, String email) {
+        super(nome, matricula, tipo, cpf, email); // Chama o construtor da classe pai (Usuario)
+    }
 
     public void cadastrarUsuario(Professor professor) {
         professores.add(professor);
     }
 
-    public Professor busscarProfessor(ArrayList<Professor> professores, String nome) {
-        for (Professor professor : professores) {
-            if (professor.getNome().equals(nome)) {
-                return professor;
-            }
-        }
-        return null;
-    }
-
     public void listarProfessores() {
+        if (professores.isEmpty()){
+            System.out.println("Nenhum professor(a) encontrado");
+        }
+        int i = 0;
         for (Usuario usuario : professores) {
-            System.out.println(usuario);
+            System.out.println((i + 1) + "." + usuario);
+            i++;
         }
     }
 
@@ -44,9 +39,9 @@ public class Professor extends Usuario {
         }
         return null;
     }
-
+    // Sobrescrevendo função toString para exibir os dados necessarios
     @Override
-    public String toString(){
-        return "Professor" + getNome() + "|" + "Matricula: " + getMatricula() + "|" + "Cpf: " + getCpf() + "|" + "Email " + getEmail();
+    public String toString() {
+        return "Professor: " + getNome() + "|" + "Matricula: " + getMatricula() + "|" + "Cpf: " + getCpf() + "|" + "Email " + getEmail();
     }
 }

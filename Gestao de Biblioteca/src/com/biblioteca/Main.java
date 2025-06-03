@@ -9,7 +9,7 @@ public class Main {
         //DECLARANDO VARIAVEIS
         int resposta = -1;
 
-        //CRIANDO OBJERTOS
+        //CRIANDO OBJETOS
         Scanner sc = new Scanner(System.in);
         Biblioteca biblioteca = new Biblioteca();
         Usuario usuario = new Usuario();
@@ -18,9 +18,9 @@ public class Main {
 
 
         do {
-            System.out.println("-------------------");
-            System.out.println("BIBLIOTECA");
-            System.out.println("-------------------");
+            System.out.println("--------------------------------------------------------------");
+            System.out.println("                        BIBLIOTECA                             ");
+            System.out.println("---------------------------------------------------------------");
             // ✅ Cadastro de livros: título, autor, ISBN, ano e editora.
             System.out.println("Digite '1' para cadastrar um livro");
 
@@ -37,6 +37,13 @@ public class Main {
             //✅ Devolução de livros: atualização do status do empréstimo e da disponibilidade do exemplar.
             System.out.println("Digite '5' para devolver um livro");
 
+            System.out.println("Digite '6' para mostrar professores");
+
+            System.out.println("Digite '7' para mostrar alunos");
+
+            System.out.println("Digite '8' para mostrar todos os livros");
+
+            System.out.println("Digite '0' para sair");
 
             resposta = sc.nextInt();
             sc.nextLine();
@@ -108,7 +115,7 @@ public class Main {
                     int tipagem = sc.nextInt();
                     sc.nextLine();
 
-                    Usuario usuario_encontrado = null; // Inicializando a variável
+                    Usuario usuario_encontrado = null;
                     Cadastrado cadastrado = new Cadastrado();
 
                     if (tipagem == 1) {
@@ -118,7 +125,7 @@ public class Main {
 
                         if (usuario_encontrado == null) {
                             System.out.println("Usuário não encontrado!");
-                            return; // Sai do fluxo caso o usuário não seja encontrado
+                            return;
                         }
                     } else if (tipagem == 2) {
                         System.out.println("Digite o número da matrícula do Professor: ");
@@ -156,13 +163,24 @@ public class Main {
                     System.out.println("---------------------------");
 
                     System.out.println("Lista de emprestimos:");
-                    biblioteca.listarEmprestimos(); // Mostra quem pegou qual livro
+                    biblioteca.listarEmprestimos();
 
                     System.out.println("Digite o nome do livro que deseja devolver:");
                     String tituloDevolucao = sc.nextLine();
                     biblioteca.realizarDevolucao(tituloDevolucao);
                     break;
-
+                case 6:
+                    System.out.println("PROFESSORES CADASTRADOS");
+                    professor.listarProfessores();
+                    break;
+                case 7:
+                    System.out.println("ALUNOS CADASTRADOS");
+                    aluno.listarAlunos();
+                    break;
+                case 8:
+                    biblioteca.listarLivrosDisponiveis();
+                    biblioteca.listarLivrosEmprestados();
+                    break;
             }
 
         } while (resposta != 0);

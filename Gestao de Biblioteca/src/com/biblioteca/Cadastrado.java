@@ -1,5 +1,6 @@
 package com.biblioteca;
 
+//Classe cadastrado recebe um objeto livro e um objeto usuario
 public class Cadastrado {
     private Livro livro;
     private Usuario usuario;
@@ -20,7 +21,7 @@ public class Cadastrado {
         this.usuario = usuario;
     }
 
-    public Cadastrado(Livro livro, Usuario usuario){
+    public Cadastrado(Livro livro, Usuario usuario) {
         this.livro = livro;
         this.usuario = usuario;
     }
