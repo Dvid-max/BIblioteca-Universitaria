@@ -20,7 +20,7 @@ public class Cadastrado {
         this.usuario = usuario;
     }
 
-    public Cadastrado(Livro livro, Usuario usuario){
+    public Cadastrado(Livro livro, Usuario usuario) {
         this.livro = livro;
         this.usuario = usuario;
     }

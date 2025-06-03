@@ -37,6 +37,13 @@ public class Main {
             //✅ Devolução de livros: atualização do status do empréstimo e da disponibilidade do exemplar.
             System.out.println("Digite '5' para devolver um livro");
 
+            System.out.println("Digite '6' para listar Alunos");
+
+            System.out.println("Digite '7' para listar Professores");
+
+            System.out.println("Digite '8' para listar livros");
+
+            System.out.println("Digite '0' para sair");
 
             resposta = sc.nextInt();
             sc.nextLine();
@@ -161,6 +168,19 @@ public class Main {
                     System.out.println("Digite o nome do livro que deseja devolver:");
                     String tituloDevolucao = sc.nextLine();
                     biblioteca.realizarDevolucao(tituloDevolucao);
+                    break;
+                //listar Alunos
+                case 6:
+                    System.out.println("ALUNOS");
+                    aluno.listarAlunos();
+                    break;
+                case 7:
+                    System.out.println("PROFESSORES");
+                    professor.listarProfessores();
+                    break;
+                case 8:
+                    biblioteca.listarLivrosDisponiveis();
+                    biblioteca.listarLivrosEmprestados();
                     break;
 
             }

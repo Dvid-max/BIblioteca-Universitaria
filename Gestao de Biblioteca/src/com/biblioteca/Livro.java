@@ -1,7 +1,6 @@
 package com.biblioteca;
 
 
-
 public class Livro {
     private String titulo;
     private String autor;
@@ -9,7 +8,6 @@ public class Livro {
     private int ano;
     private String editora;
     private boolean disponivel = true;
-
 
 
     public Livro(String titulo, String autor, String isbn, int ano, String editora) {
@@ -29,6 +27,7 @@ public class Livro {
     public void setDisponivel(boolean disponivel) {
         this.disponivel = disponivel;
     }
+
     public Livro() {
 
     }
@@ -72,7 +71,6 @@ public class Livro {
     public void setEditora(String editora) {
         this.editora = editora;
     }
-
 
 
     @Override
