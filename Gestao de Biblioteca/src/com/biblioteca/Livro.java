@@ -8,6 +8,7 @@ public class Livro {
     private String isbn;
     private int ano;
     private String editora;
+    private boolean disponivel = true;
 
 
 
@@ -20,6 +21,14 @@ public class Livro {
 
     }
 
+
+    public boolean isDisponivel() {
+        return disponivel;
+    }
+
+    public void setDisponivel(boolean disponivel) {
+        this.disponivel = disponivel;
+    }
     public Livro() {
 
     }
@@ -68,8 +77,7 @@ public class Livro {
 
     @Override
     public String toString() {
-        return "Título: " + titulo + ". " +  "Autor: " + autor + ". " + "ISBN: " + isbn + ". " + "Ano: " + ano + ". " + "Editora: " + editora +  "\n";
-
+        return "Título: " + titulo + " | Autor: " + autor + " | Disponível: " + (disponivel ? "Sim" : "Não");
     }
 
 }
