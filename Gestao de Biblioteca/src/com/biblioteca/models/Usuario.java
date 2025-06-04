@@ -1,4 +1,4 @@
-package com.biblioteca;
+package com.biblioteca.models;
 
 public class Usuario {
     //Criando atributos como String porque podem possuir caracteres especiais
@@ -53,6 +53,7 @@ public class Usuario {
     public Usuario(String nome, String matricula, String tipo, String cpf, String email) {
         this.nome = nome;
         this.matricula = matricula;
+        this.tipo = tipo;
         this.cpf = cpf;
         this.email = email;
     }

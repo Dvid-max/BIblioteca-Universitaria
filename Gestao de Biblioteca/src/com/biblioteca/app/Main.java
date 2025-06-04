@@ -1,6 +1,10 @@
-package com.biblioteca;
+package com.biblioteca.app;
 
-import com.sun.security.jgss.GSSUtil;
+import com.biblioteca.models.Aluno;
+import com.biblioteca.models.Professor;
+import com.biblioteca.models.Usuario;
+import com.biblioteca.services.Biblioteca;
+import com.biblioteca.services.Cadastrado;
 
 import java.util.Scanner;
 

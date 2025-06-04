@@ -1,4 +1,7 @@
-package com.biblioteca;
+package com.biblioteca.services;
+
+import com.biblioteca.app.Livro;
+import com.biblioteca.models.Usuario;
 
 public class Cadastrado {
     private Livro livro;
