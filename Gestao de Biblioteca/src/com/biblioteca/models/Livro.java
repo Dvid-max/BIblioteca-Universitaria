@@ -1,4 +1,4 @@
-package com.biblioteca.app;
+package com.biblioteca.models;
 
 
 public class Livro {

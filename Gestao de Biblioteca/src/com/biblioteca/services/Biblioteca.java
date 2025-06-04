@@ -1,6 +1,6 @@
 package com.biblioteca.services;
 
-import com.biblioteca.app.Livro;
+import com.biblioteca.models.Livro;
 
 import java.util.ArrayList;
 import java.util.List;

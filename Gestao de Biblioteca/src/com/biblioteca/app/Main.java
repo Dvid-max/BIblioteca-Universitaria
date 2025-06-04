@@ -1,6 +1,7 @@
 package com.biblioteca.app;
 
 import com.biblioteca.models.Aluno;
+import com.biblioteca.models.Livro;
 import com.biblioteca.models.Professor;
 import com.biblioteca.models.Usuario;
 import com.biblioteca.services.Biblioteca;
